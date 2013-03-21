@@ -52,6 +52,10 @@ Implémentation du contrôleur
 
 Voir fichier "main.js" pour les tests. Il faut penser à créer un mock pour le service.
 
+Accès aux données réelles
+=========================
+
+Il faudrait faire du JSONP mais il semble que le serveur data.nantes.fr ne le supporte pas.
 
 Liens
 ======
