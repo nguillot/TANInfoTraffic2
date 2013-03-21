@@ -1,9 +1,15 @@
-<div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+<div class="row-fluid">
+    <div class="span2"><h4>Rechercher:</h4><input ng-model="query"></div>
+    <div class="span10">
+        <h3>{{infoTrafficList.length}} messages d'information sur le traffic TAN : </h3>
+        <ul>
+            <li ng-repeat="infoTraffic in infoTrafficList | filter:query">
+                <p><strong>{{infoTraffic.title}} <span ng-show="infoTraffic.endingDate">du</span>
+                    <span ng-hide="infoTraffic.endingDate">à partir du</span> {{infoTraffic.startingDate}}
+                    <span ng-show="infoTraffic.endingDate"> au {{infoTraffic.endingDate}}</span>
+                    (lignes {{infoTraffic.routes.join("-")}})
+                </strong> : {{infoTraffic.description}}</p>
+            </li>
+        </ul>
+    </div>
 </div>

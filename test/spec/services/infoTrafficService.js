@@ -62,7 +62,7 @@ describe('Service: infoTrafficService', function () {
                                                                 "HEURE_DEBUT" : "13:36",
                                                                 "HEURE_FIN" : "21:30",
                                                                 "PERTURBATION_TERMINEE" : "0",
-                                                                "TRONCONS" : "[27/1/-/-];[28/1/-/-];[29/1/-/-];[36/1/-/-];[39/1/-/-];[94/2/-/-];[98/2/-/-];[68/1/-/-]"
+                                                                "TRONCONS" : "[27/1/-/-];[27/2/-/-];[28/1/-/-];[29/1/-/-];[36/1/-/-];[39/1/-/-];[94/2/-/-];[98/2/-/-];[68/1/-/-]"
                                                              }
                                                           ]
                                                     }
@@ -91,7 +91,7 @@ describe('Service: infoTrafficService', function () {
                                                       "startingDate" : "09/03/2012 13:36",
                                                       "endingDate" : "31/03/2013 21:30",
                                                       "isFinished" : false,
-                                                      "routes" : ["27","28","29","36","39","94","98","68"]
+                                                      "routes" : ["27","28","29","36","39","68","94","98"]
                                                    }]);
     });
 

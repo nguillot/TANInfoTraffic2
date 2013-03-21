@@ -6,17 +6,62 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('taninfotraffic2App'));
 
   var MainCtrl,
-    scope;
+    scope,
+    service;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller) {
-    scope = {};
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
-    });
-  }));
+  describe('Initial call', function () {
+      // Initialize the controller and a mock scope
+      beforeEach(inject(function ($controller) {
+        scope = {};
+        //we mock the service
+        service = {
+            get : function() {return []},
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+            prepareInfoTraffics : function(callback) {
+                callback([{"title" : "Travaux rue Esnoult des Châtelets à Nantes",
+                       "description" : "En raison de travaux rue Esnoult des Châtelets à Nantes, le couloir de bus est neutralisé entre les rues Goudy et St Jacques, uniquement en direction de Greneraie, pour une durée de 15 mois.",
+                       "startingDate" : "09/03/2012 13:36",
+                       "endingDate" : "31/03/2013 21:30",
+                       "isFinished" : false
+                }]);
+            }
+        }
+
+        MainCtrl = $controller('MainCtrl', {
+          $scope: scope,
+          infoTrafficService: service
+        });
+      }));
+
+      it('should attach a list info traffic to the scope', function () {
+        expect(scope.infoTrafficList.length).toBe(1);
+      });
+  });
+
+  describe('Service call with in memory data', function () {
+      // Initialize the controller and a mock scope
+      beforeEach(inject(function ($controller) {
+        scope = {};
+        //we mock the service
+        service = {
+            get : function() {
+                return [{
+                    "title" : "Travaux rue Esnoult des Châtelets à Nantes",
+                    "description" : "En raison de travaux rue Esnoult des Châtelets à Nantes, le couloir de bus est neutralisé entre les rues Goudy et St Jacques, uniquement en direction de Greneraie, pour une durée de 15 mois.",
+                    "startingDate" : "09/03/2012 13:36",
+                    "endingDate" : "31/03/2013 21:30",
+                    "isFinished" : false
+            }]}
+        }
+
+        MainCtrl = $controller('MainCtrl', {
+          $scope: scope,
+          infoTrafficService: service
+        });
+      }));
+
+      it('should attach a list info traffic to the scope', function () {
+        expect(scope.infoTrafficList.length).toBe(1);
+      });
   });
 });

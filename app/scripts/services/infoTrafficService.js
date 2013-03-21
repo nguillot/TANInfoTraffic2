@@ -65,12 +65,13 @@ angular.module('taninfotraffic2App').factory('TANInfoTrafficAdapter',function() 
                     //tmp = "[27";
                     tmp = tmp.substring(1, tmp.length);
                     //tmp = "27";
-                    routes.push(tmp);
+                    if(routes.indexOf(tmp) === -1)
+                        routes.push(tmp);
                 }
             }
         }
 
-        return routes;
+        return routes.sort();
     };
 
     return TANInfoTrafficAdapter;
